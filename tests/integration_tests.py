@@ -3,10 +3,11 @@
 
 import os
 import unittest
-from SearchAnalyzer import scrape_with_config
-from SearchAnalyzer.parsing import get_parser_by_search_engine
-from SearchAnalyzer.config import get_config
 from collections import Counter
+
+from SearchAnalyzer import scrape_with_config
+from SearchAnalyzer.config import get_config
+from SearchAnalyzer.parser.tools import get_parser_by_search_engine
 
 config = get_config()
 base = os.path.dirname(os.path.realpath(__file__))

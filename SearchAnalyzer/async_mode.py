@@ -1,13 +1,15 @@
 import asyncio
-import aiohttp
 import datetime
+import logging
 from urllib.parse import urlencode
-from SearchAnalyzer.parsing import get_parser_by_search_engine, parse_serp
+
+import aiohttp
+
 from SearchAnalyzer.http_mode import get_GET_params_for_search_engine, headers
+from SearchAnalyzer.output_converter import store_serp_result
+from SearchAnalyzer.parser.tools import get_parser_by_search_engine, parse_serp
 from SearchAnalyzer.scraping import get_base_search_url_by_search_engine
 from SearchAnalyzer.utils import get_some_words
-from SearchAnalyzer.output_converter import store_serp_result
-import logging
 
 logger = logging.getLogger(__name__)
 

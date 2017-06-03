@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 
+import abc
 import datetime
+import logging
+import os
 import random
 import time
-import os
-import abc
 
-from SearchAnalyzer.proxies import Proxy
 from SearchAnalyzer.database import db_Proxy
 from SearchAnalyzer.output_converter import store_serp_result
-from SearchAnalyzer.parsing import get_parser_by_search_engine, parse_serp
-import logging
+from SearchAnalyzer.parser.tools import get_parser_by_search_engine, parse_serp
+from SearchAnalyzer.proxies import Proxy
 
 logger = logging.getLogger(__name__)
 

@@ -1,16 +1,18 @@
 # -*- coding: utf-8 -*-
 
-import os
-import time
-import hashlib
-import gzip
 import bz2
-import re
-from sqlalchemy.orm.exc import NoResultFound
-from SearchAnalyzer.database import SearchEngineResultsPage
-from SearchAnalyzer.parsing import parse_serp
-from SearchAnalyzer.output_converter import store_serp_result
+import gzip
+import hashlib
 import logging
+import os
+import re
+import time
+
+from sqlalchemy.orm.exc import NoResultFound
+
+from SearchAnalyzer.database import SearchEngineResultsPage
+from SearchAnalyzer.output_converter import store_serp_result
+from SearchAnalyzer.parser.tools import parse_serp
 
 """
 SearchAnalyzer is a complex application and thus searching is error prone. While developing,

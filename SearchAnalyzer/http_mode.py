@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 
-import threading
-import json
 import datetime
+import json
+import logging
 import socket
+import threading
 from urllib.parse import urlencode
 
 import SearchAnalyzer.socks as socks
+from SearchAnalyzer.parser.tools import get_parser_by_search_engine
 from SearchAnalyzer.scraping import SearchEngineScrape, get_base_search_url_by_search_engine
-from SearchAnalyzer.parsing import get_parser_by_search_engine
 from SearchAnalyzer.user_agents import random_user_agent
-import logging
 
 logger = logging.getLogger(__name__)
 
