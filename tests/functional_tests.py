@@ -293,11 +293,11 @@ class SearchAnalyzerFunctionalTestCase(unittest.TestCase):
             predicate_true_at_least_n_times(lambda v: is_string_and_longer_than(v, 3), rows, int(0.8*len(rows)), 'snippet')
 
 
-    def test_asynchronous_mode_bing_and_yandex(self):
+    def test_asynchronous_mode_bing_and_google(self):
         """
         Expected results:
         - around 60 results
-        - 30 results for bing and 30 results for yandex
+        - 30 results for bing and 30 results for google
         - valid json file with the contents
         """
         results_file = os.path.join(tempfile.gettempdir(), 'async_results.json')
@@ -306,7 +306,7 @@ class SearchAnalyzerFunctionalTestCase(unittest.TestCase):
 
         config = {
             'keyword': 'where is my mind',
-            'search_engines': ['bing', 'yandex'],
+            'search_engines': ['bing', 'google'],
             'num_results_per_page': 10,
             'num_pages_for_keyword': 3,
             'scrape_method': 'http-async',
