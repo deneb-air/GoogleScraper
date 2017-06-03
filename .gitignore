@@ -42,6 +42,9 @@ results*
 # scraping keyword files
 kwfiles/
 
+# tmp test files
+tests/data/tmp
+
 # various virtual environments for testings
 ve32/
 
