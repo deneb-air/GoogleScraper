@@ -1,23 +1,23 @@
 # -*- coding: utf-8 -*-
 
 import argparse
-from GoogleScraper.version import __version__
+from SearchAnalyzer.version import __version__
 
 
 def get_command_line(only_print_help=False):
     """
-    Parse command line arguments when GoogleScraper is used as a CLI application.
+    Parse command line arguments when SearchAnalyzer is used as a CLI application.
 
     Returns:
         The configuration as a dictionary that determines the behaviour of the app.
     """
 
-    parser = argparse.ArgumentParser(prog='GoogleScraper',
+    parser = argparse.ArgumentParser(prog='SearchAnalyzer',
                                      description='Scrapes the Google, Yandex, Bing and many other  search engines by '
                                                  'forging http requests that imitate browser searches or by using real '
                                                  'browsers controlled by the selenium framework. '
                                                  'Multithreading support.',
-                                     epilog='GoogleScraper {version}. This program might infringe the TOS of the '
+                                     epilog='SearchAnalyzer {version}. This program might infringe the TOS of the '
                                             'search engines. Please use it on your own risk. (c) by Nikolai Tschacher'
                                             ', 2012-2015. incolumitas.com'.format(version=__version__))
 
@@ -76,7 +76,7 @@ def get_command_line(only_print_help=False):
                                              'Example file: socks4 127.0.0.1:99\nsocks5 33.23.193.22:1080\n')
 
     parser.add_argument('--config-file', type=str, dest='config_file', action='store',
-                        help='The path to the configuration file for GoogleScraper. Normally you won\'t need this, '
+                        help='The path to the configuration file for SearchAnalyzer. Normally you won\'t need this, '
                              'because GoogleScrape comes shipped with a thoroughly commented configuration file named '
                              '"scrape_config.py"')
 
@@ -107,7 +107,7 @@ NOTSET = 0
                              "config file from it.")
 
     parser.add_argument('-V', '--v', '--version', action='store_true', default=False, dest='version',
-                        help='Prints the version of GoogleScraper')
+                        help='Prints the version of SearchAnalyzer')
 
     parser.add_argument('--clean', action='store_true', default=False,
                         help='Cleans all stored data. Please be very careful when you use this flag.')
@@ -117,7 +117,7 @@ NOTSET = 0
                              "<host>/<dbname>. Has precedence over proxy files.")
 
     parser.add_argument('-s', '--search-engines', action='store', default=['google'],
-                        help='What search engines to use (See GoogleScraper --config for the all supported). If you '
+                        help='What search engines to use (See SearchAnalyzer --config for the all supported). If you '
                              'want to use more than one at the same time, just separate with commatas: "google, bing, '
                              'yandex". If you want to use all search engines that are available, give \'*\' as '
                              'argument.')

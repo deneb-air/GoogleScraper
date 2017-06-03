@@ -7,7 +7,7 @@ import lxml.html
 from lxml.html.clean import Cleaner
 from urllib.parse import unquote
 import pprint
-from GoogleScraper.database import SearchEngineResultsPage
+from SearchAnalyzer.database import SearchEngineResultsPage
 import logging
 from cssselect import HTMLTranslator
 
@@ -1048,7 +1048,7 @@ def parse_serp(config, html=None, parser=None, scraper=None, search_engine=None,
 
 
 if __name__ == '__main__':
-    """Originally part of https://github.com/NikolaiT/GoogleScraper.
+    """Originally part of https://github.com/NikolaiT/SearchAnalyzer.
     
     Only for testing purposes: May be called directly with an search engine 
     search url. For example:
@@ -1056,7 +1056,7 @@ if __name__ == '__main__':
     python3 parsing.py 'http://yandex.ru/yandsearch?text=GoogleScraper&lr=178&csg=82%2C4317%2C20%2C20%2C0%2C0%2C0'
     
     Please note: Using this module directly makes little sense, because requesting such urls
-    directly without imitating a real browser (which is done in my GoogleScraper module) makes
+    directly without imitating a real browser (which is done in my SearchAnalyzer module) makes
     the search engines return crippled html, which makes it impossible to parse.
     But for some engines it nevertheless works (for example: yandex, google, ...).
     """

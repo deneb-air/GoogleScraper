@@ -24,8 +24,8 @@ except ImportError as ie:
     print(ie)
     sys.exit('You can install missing modules with `pip3 install [modulename]`')
 
-from GoogleScraper.scraping import SearchEngineScrape, SeleniumSearchError, get_base_search_url_by_search_engine, MaliciousRequestDetected
-from GoogleScraper.user_agents import random_user_agent
+from SearchAnalyzer.scraping import SearchEngineScrape, SeleniumSearchError, get_base_search_url_by_search_engine, MaliciousRequestDetected
+from SearchAnalyzer.user_agents import random_user_agent
 import logging
 
 

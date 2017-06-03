@@ -2,11 +2,11 @@ import asyncio
 import aiohttp
 import datetime
 from urllib.parse import urlencode
-from GoogleScraper.parsing import get_parser_by_search_engine, parse_serp
-from GoogleScraper.http_mode import get_GET_params_for_search_engine, headers
-from GoogleScraper.scraping import get_base_search_url_by_search_engine
-from GoogleScraper.utils import get_some_words
-from GoogleScraper.output_converter import store_serp_result
+from SearchAnalyzer.parsing import get_parser_by_search_engine, parse_serp
+from SearchAnalyzer.http_mode import get_GET_params_for_search_engine, headers
+from SearchAnalyzer.scraping import get_base_search_url_by_search_engine
+from SearchAnalyzer.utils import get_some_words
+from SearchAnalyzer.output_converter import store_serp_result
 import logging
 
 logger = logging.getLogger(__name__)
@@ -140,8 +140,8 @@ class AsyncScrapeScheduler(object):
 
 
 if __name__ == '__main__':
-    from GoogleScraper.config import get_config
-    from GoogleScraper.scrape_jobs import default_scrape_jobs_for_keywords
+    from SearchAnalyzer.config import get_config
+    from SearchAnalyzer.scrape_jobs import default_scrape_jobs_for_keywords
 
     some_words = get_some_words(n=1)
 

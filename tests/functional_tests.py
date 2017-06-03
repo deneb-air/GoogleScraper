@@ -2,15 +2,15 @@
 # -*- coding: utf-8 -*-
 
 """
-These functional tests cannot cover the whole functionality of GoogleScraper.
+These functional tests cannot cover the whole functionality of SearchAnalyzer.
 
-But it is tried to cover at least the most common use cases with GoogleScraper, such that
+But it is tried to cover at least the most common use cases with SearchAnalyzer, such that
 a basic functionality is proved to be correct. The functional tests are run on git hook pre-push time,
 so it is enforced that only minimally stable versions are online.
 
 When testing single functions:
 
-python -m pytest tests/functional_tests.py::GoogleScraperFunctionalTestCase::test_google_with_phantomjs_and_json_output
+python -m pytest tests/functional_tests.py::SearchAnalyzerFunctionalTestCase::test_google_with_phantomjs_and_json_output
 """
 
 import csv
@@ -18,8 +18,8 @@ import json
 import tempfile
 import os
 import unittest
-from GoogleScraper import scrape_with_config
-from GoogleScraper.config import get_config
+from SearchAnalyzer import scrape_with_config
+from SearchAnalyzer.config import get_config
 
 base_config = get_config()
 all_search_engines = base_config['supported_search_engines']
@@ -39,7 +39,7 @@ def predicate_true_at_least_n_times(pred, collection, n, key):
     elif key in collection[0]:
         assert len([v[key] for v in collection if pred(v[key])]) > n
 
-class GoogleScraperFunctionalTestCase(unittest.TestCase):
+class SearchAnalyzerFunctionalTestCase(unittest.TestCase):
 
     def test_all_search_engines_in_http_mode(self):
         """

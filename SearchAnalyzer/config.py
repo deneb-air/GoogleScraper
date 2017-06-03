@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import GoogleScraper.scrape_config
+import SearchAnalyzer.scrape_config
 import inspect
 import os
 
@@ -22,7 +22,7 @@ def get_config(command_line_args=None, external_configuration_file=None, config_
         - Internal config file
         - External config file (As specified by the end user)
         - Command Line args
-        - Config that is passed to GoogleScraper if it is used as library.
+        - Config that is passed to SearchAnalyzer if it is used as library.
 
     The order in which configuration is overwritten:
 
@@ -30,14 +30,14 @@ def get_config(command_line_args=None, external_configuration_file=None, config_
 
     So for example, a command line args overwrites an option in a user specified
     config file. But the user specified config file is still more valued than the
-    same named option in the internal config file. But if GoogleScraper is called
+    same named option in the internal config file. But if SearchAnalyzer is called
     as library, the config passed there will overwrite everything else (Even if this config
     has specified an external config file...).
 
     External configuration files may be only specified in the command line args.
     """
 
-    config = GoogleScraper.scrape_config
+    config = SearchAnalyzer.scrape_config
 
     def update_members(d):
         for k, v in d.items():

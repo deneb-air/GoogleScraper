@@ -7,13 +7,13 @@ import gzip
 import bz2
 import re
 from sqlalchemy.orm.exc import NoResultFound
-from GoogleScraper.database import SearchEngineResultsPage
-from GoogleScraper.parsing import parse_serp
-from GoogleScraper.output_converter import store_serp_result
+from SearchAnalyzer.database import SearchEngineResultsPage
+from SearchAnalyzer.parsing import parse_serp
+from SearchAnalyzer.output_converter import store_serp_result
 import logging
 
 """
-GoogleScraper is a complex application and thus searching is error prone. While developing,
+SearchAnalyzer is a complex application and thus searching is error prone. While developing,
 you may need to repeat the same searches several times and you might end up being banned by
 the search engine providers. This is why all searches are chached by default.
 
@@ -52,7 +52,7 @@ class InvalidConfigurationFileException(Exception):
 
 class CompressedFile(object):
     """Read and write the data of a compressed file.
-    Used to cache files for GoogleScraper.s
+    Used to cache files for SearchAnalyzer.s
 
     Supported algorithms: gz, bz2
 
@@ -124,7 +124,7 @@ class CompressedFile(object):
 
 class CacheManager():
     """
-    Manages caching for GoogleScraper.
+    Manages caching for SearchAnalyzer.
     """
 
     def __init__(self, config):

@@ -33,7 +33,7 @@ nonpub_tests/
 
 results*
 
-# cache for GoogleScraper testings
+# cache for SearchAnalyzer testings
 .scrapecache/
 
 # backup files

@@ -6,10 +6,10 @@ import time
 import os
 import abc
 
-from GoogleScraper.proxies import Proxy
-from GoogleScraper.database import db_Proxy
-from GoogleScraper.output_converter import store_serp_result
-from GoogleScraper.parsing import get_parser_by_search_engine, parse_serp
+from SearchAnalyzer.proxies import Proxy
+from SearchAnalyzer.database import db_Proxy
+from SearchAnalyzer.output_converter import store_serp_result
+from SearchAnalyzer.parsing import get_parser_by_search_engine, parse_serp
 import logging
 
 logger = logging.getLogger(__name__)
@@ -42,7 +42,7 @@ class StopScrapingException(Exception):
 
 
 """
-GoogleScraper should be as robust as possible.
+SearchAnalyzer should be as robust as possible.
 
 There are several conditions that may stop the scraping process. In such a case,
 a StopScrapingException is raised with the reason.
@@ -398,8 +398,8 @@ class SearchEngineScrape(metaclass=abc.ABCMeta):
                 self.session.commit()
 
 
-from GoogleScraper.http_mode import HttpScrape
-from GoogleScraper.selenium_mode import get_selenium_scraper_by_search_engine_name
+from SearchAnalyzer.http_mode import HttpScrape
+from SearchAnalyzer.selenium_mode import get_selenium_scraper_by_search_engine_name
 
 
 class ScrapeWorkerFactory():

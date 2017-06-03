@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from GoogleScraper import scrape_with_config, GoogleSearchError
-from GoogleScraper.utils import get_some_words
+from SearchAnalyzer import scrape_with_config, GoogleSearchError
+from SearchAnalyzer.utils import get_some_words
 
 keywords = get_some_words(10)
 with open('keywords.txt', 'wt') as f:

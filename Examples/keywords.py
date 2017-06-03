@@ -1,9 +1,9 @@
 """
-GoogleScraper will scrape the jobs according to the dictionaries below.
+SearchAnalyzer will scrape the jobs according to the dictionaries below.
 
-Passing the scrape_jobs to GoogleScraper is simple:
+Passing the scrape_jobs to SearchAnalyzer is simple:
 
-GoogleScraper --keyword-file keywords.py
+SearchAnalyzer --keyword-file keywords.py
 
 """
 

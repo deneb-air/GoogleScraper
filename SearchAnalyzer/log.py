@@ -7,7 +7,7 @@ import logging
 Loggers are created at the top of modules. Therefore each code may access
 a logger. But there is a fundamental problem to this approach:
 
-The configuration that determines the state of GoogleScraper may come from various
+The configuration that determines the state of SearchAnalyzer may come from various
 sources and is parsed only at runtime in the config.py module. In this config, the
 loglevel is also specified.
 
@@ -17,7 +17,7 @@ the configuration for each submodule.
 
 def setup_logger(level=logging.INFO):
     """
-    Configure global log settings for GoogleScraper
+    Configure global log settings for SearchAnalyzer
     """
     logger = logging.getLogger()
     logger.setLevel(level)

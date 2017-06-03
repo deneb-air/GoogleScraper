@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from GoogleScraper import scrape_with_config, GoogleSearchError
+from SearchAnalyzer import scrape_with_config, GoogleSearchError
 
 # simulating a image search for all search engines that support image search.
 # Then download all found images :)

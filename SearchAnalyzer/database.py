@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
 """
-The database schema of GoogleScraper.
+The database schema of SearchAnalyzer.
 
 There are four entities:
 
-    ScraperSearch: Represents a call to GoogleScraper. A search job.
+    ScraperSearch: Represents a call to SearchAnalyzer. A search job.
     SearchEngineResultsPage: Represents a SERP result page of a search_engine
     Link: Represents a LINK on a SERP
     Proxy: Stores all proxies and their statuses.

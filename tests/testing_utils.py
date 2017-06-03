@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import random
-from GoogleScraper.utils import get_some_words
+from SearchAnalyzer.utils import get_some_words
 
 def random_word():
     return random.choice(words)

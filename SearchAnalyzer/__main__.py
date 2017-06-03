@@ -6,6 +6,6 @@ from .core import main
 This file is executed by the toolchain and used as a entry point.
 """
 
-# Call the main function of GoogleScraper.
+# Call the main function of SearchAnalyzer.
 main(return_results=False)
 

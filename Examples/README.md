@@ -1,7 +1,7 @@
-## Examples of using GoogleScraper
+## Examples of using SearchAnalyzer
 
-In this directory you can find a wide range of examples of how to use GoogleScraper. It would be 
-great if some of you could create Pull Requests with your **own examples of how to use GoogleScraper!**
+In this directory you can find a wide range of examples of how to use SearchAnalyzer. It would be
+great if some of you could create Pull Requests with your **own examples of how to use SearchAnalyzer!**
 
 In all the below example, caching is disabled by default.
 
@@ -34,7 +34,7 @@ looks like this:
 
 ### Finding plagiarized content
 
-This is a [slightly more complex use case](finding_plagiarized_content.py), where some predefined strings are searched literally with GoogleScraper. Google as a search engine is used and selenium mode with
+This is a [slightly more complex use case](finding_plagiarized_content.py), where some predefined strings are searched literally with SearchAnalyzer. Google as a search engine is used and selenium mode with
 Chrome as frontend. Each serp result has a `serp.effective_query` property. If helps to determine whether the literal search (with `"` quotes) got us some results.
 
 
@@ -44,7 +44,7 @@ Chrome as frontend. Each serp result has a `serp.effective_query` property. If h
 
 ### Image Scraping
 
-This is another quite cute use case of GoogleScraper. In [this example](image_search.py), images are scraped and saved in a `images/` directory. The configuration used looks like this:
+This is another quite cute use case of SearchAnalyzer. In [this example](image_search.py), images are scraped and saved in a `images/` directory. The configuration used looks like this:
 
     config = {
         'keyword': 'beautiful landscape', # :D hehe have fun my dear friends

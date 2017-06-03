@@ -5,11 +5,11 @@ import sys
 import json
 import pprint
 import logging
-from GoogleScraper.database import Link, SERP
+from SearchAnalyzer.database import Link, SERP
 
 """Stores SERP results in the appropriate output format.
 
-Streamline process, one serp object at the time, because GoogleScraper works incrementally.
+Streamline process, one serp object at the time, because SearchAnalyzer works incrementally.
 Furthermore we cannot accumulate all results and then process them, because it would be
 impossible to launch lang scrape jobs with millions of keywords.
 """

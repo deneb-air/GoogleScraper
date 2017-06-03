@@ -1,4 +1,4 @@
-# GoogleScraper - Scraping search engines professionally
+# SearchAnalyzer - Scraping search engines professionally
 
 ## News
 

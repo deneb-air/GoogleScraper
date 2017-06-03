@@ -9,15 +9,15 @@ __author__ = 'Nikolai Tschacher'
 __updated__ = '30.11.2015'  # day.month.year
 __home__ = 'incolumitas.com'
 
-from GoogleScraper.proxies import Proxy
-from GoogleScraper.config import get_config
+from SearchAnalyzer.proxies import Proxy
+from SearchAnalyzer.config import get_config
 import logging
 
 """
-All objects imported here are exposed as the public API of GoogleScraper
+All objects imported here are exposed as the public API of SearchAnalyzer
 """
 
-from GoogleScraper.core import scrape_with_config
-from GoogleScraper.scraping import GoogleSearchError, MaliciousRequestDetected
+from SearchAnalyzer.core import scrape_with_config
+from SearchAnalyzer.scraping import GoogleSearchError, MaliciousRequestDetected
 
 logging.getLogger(__name__)

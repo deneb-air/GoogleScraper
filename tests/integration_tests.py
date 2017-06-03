@@ -3,9 +3,9 @@
 
 import os
 import unittest
-from GoogleScraper import scrape_with_config
-from GoogleScraper.parsing import get_parser_by_search_engine
-from GoogleScraper.config import get_config
+from SearchAnalyzer import scrape_with_config
+from SearchAnalyzer.parsing import get_parser_by_search_engine
+from SearchAnalyzer.config import get_config
 from collections import Counter
 
 config = get_config()
@@ -14,7 +14,7 @@ base = os.path.dirname(os.path.realpath(__file__))
 all_search_engines = config.get('supported_search_engines')
 
 
-class GoogleScraperIntegrationTestCase(unittest.TestCase):
+class SearchAnalyzerIntegrationTestCase(unittest.TestCase):
     def setUp(self):
         pass
 
@@ -148,11 +148,11 @@ class GoogleScraperIntegrationTestCase(unittest.TestCase):
 
         The keyword used in the static SERP pages MUST be 'some words'
 
-        The filenames must be in the GoogleScraper cache format.
+        The filenames must be in the SearchAnalyzer cache format.
         """
 
         import csv
-        from GoogleScraper.output_converter import csv_fieldnames
+        from SearchAnalyzer.output_converter import csv_fieldnames
 
         number_search_engines = len(all_search_engines)
         csv_outfile = os.path.join(base, 'data/tmp/csv_test.csv')
@@ -370,7 +370,7 @@ class GoogleScraperIntegrationTestCase(unittest.TestCase):
         reader1, reader2 = csv.DictReader(file1), csv.DictReader(file2)
 
         header1, header2 = reader1.fieldnames, reader2.fieldnames
-        from GoogleScraper.output_converter import csv_fieldnames
+        from SearchAnalyzer.output_converter import csv_fieldnames
 
         assert header1 == header2 == csv_fieldnames
 

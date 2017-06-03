@@ -6,10 +6,10 @@ import datetime
 import socket
 from urllib.parse import urlencode
 
-import GoogleScraper.socks as socks
-from GoogleScraper.scraping import SearchEngineScrape, get_base_search_url_by_search_engine
-from GoogleScraper.parsing import get_parser_by_search_engine
-from GoogleScraper.user_agents import random_user_agent
+import SearchAnalyzer.socks as socks
+from SearchAnalyzer.scraping import SearchEngineScrape, get_base_search_url_by_search_engine
+from SearchAnalyzer.parsing import get_parser_by_search_engine
+from SearchAnalyzer.user_agents import random_user_agent
 import logging
 
 logger = logging.getLogger(__name__)

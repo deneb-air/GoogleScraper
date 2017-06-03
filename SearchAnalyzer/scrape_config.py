@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-This is the basic GoogleScraper configuration file.
+This is the basic SearchAnalyzer configuration file.
 
 All options are basic Python data types. You may use all of Python's language
 capabilities to specify settings in this file.
@@ -9,16 +9,16 @@ capabilities to specify settings in this file.
 
 """
 [OUTPUT]
-Settings which control how GoogleScraper represents it's results
+Settings which control how SearchAnalyzer represents it's results
 and handles output.
 """
-# How and if results are printed when running GoogleScraper.
+# How and if results are printed when running SearchAnalyzer.
 # if set to 'all', then all data from results are outputted
 # if set to 'summarize', then only a summary of results is given.
 print_results = 'all'
 
 # The name of the database that is written to the same
-# directory where GoogleScraper will be called.
+# directory where SearchAnalyzer will be called.
 database_name = 'google_scraper'
 
 # The file name of the output
@@ -80,7 +80,7 @@ search_offset = 1
 
 # In some countries the main search engine domain is blocked. Thus, search engines
 # have different ip on which they are reachable. If you set a file with urls for the search engine,
-# then GoogleScraper will pick a random url for any scraper instance.
+# then SearchAnalyzer will pick a random url for any scraper instance.
 # One url per line. It needs to be a valid url, not just an ip address!
 google_ip_file = ''
 
@@ -131,14 +131,14 @@ scrape_method = 'selenium'
 
 # If scraping with the own IP address should be allowed.
 # If this is set to False and you don't specify any proxies,
-# GoogleScraper cannot run.
+# SearchAnalyzer cannot run.
 use_own_ip = True
 
 # Whether to check proxies before starting the scrape
 check_proxies = True
 
-# You can set the internal behaviour of GoogleScraper here
-# When GoogleScraper is invoked as a command line script, it is very much desirable
+# You can set the internal behaviour of SearchAnalyzer here
+# When SearchAnalyzer is invoked as a command line script, it is very much desirable
 # to be as robust as possible. But when used from another program, we need immediate
 # response when something fails.
 raise_exceptions_while_scraping = True
@@ -163,7 +163,7 @@ proxy_file = ''
 # Whether to continue the last scrape when ended early.
 continue_last_scrape = True
 
-# Proxies stored in a MySQL database. If you set a parameter here, GoogleScraper will look for proxies
+# Proxies stored in a MySQL database. If you set a parameter here, SearchAnalyzer will look for proxies
 # in a table named 'proxies' for proxies with the following format=
 # CREATE TABLE proxies (
 #   id INTEGER PRIMARY KEY NOT NULL,

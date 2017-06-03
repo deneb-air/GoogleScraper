@@ -5,7 +5,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 """
-The core logic of GoogleScraper is handled here.
+The core logic of SearchAnalyzer is handled here.
 
 By default, every keyword is scraped on all given search engines for the supplied
 number of pages.

@@ -7,19 +7,19 @@ import sys
 import hashlib
 import os
 import queue
-from GoogleScraper.log import setup_logger
-from GoogleScraper.commandline import get_command_line
-from GoogleScraper.database import ScraperSearch, SERP, Link, get_session, fixtures
-from GoogleScraper.proxies import parse_proxy_file, get_proxies_from_mysql_db, add_proxies_to_db
-from GoogleScraper.caching import CacheManager
-from GoogleScraper.config import get_config
-from GoogleScraper.scrape_jobs import default_scrape_jobs_for_keywords
-from GoogleScraper.scraping import ScrapeWorkerFactory
-from GoogleScraper.output_converter import init_outfile
-from GoogleScraper.async_mode import AsyncScrapeScheduler
+from SearchAnalyzer.log import setup_logger
+from SearchAnalyzer.commandline import get_command_line
+from SearchAnalyzer.database import ScraperSearch, SERP, Link, get_session, fixtures
+from SearchAnalyzer.proxies import parse_proxy_file, get_proxies_from_mysql_db, add_proxies_to_db
+from SearchAnalyzer.caching import CacheManager
+from SearchAnalyzer.config import get_config
+from SearchAnalyzer.scrape_jobs import default_scrape_jobs_for_keywords
+from SearchAnalyzer.scraping import ScrapeWorkerFactory
+from SearchAnalyzer.output_converter import init_outfile
+from SearchAnalyzer.async_mode import AsyncScrapeScheduler
 import logging
-from GoogleScraper.utils import get_base_path
-import GoogleScraper.config
+from SearchAnalyzer.utils import get_base_path
+import SearchAnalyzer.config
 
 logger = logging.getLogger(__name__)
 
@@ -46,7 +46,7 @@ def id_for_keywords(keywords):
 
 
 def scrape_with_config(config):
-    """Runs GoogleScraper with the dict in config.
+    """Runs SearchAnalyzer with the dict in config.
 
     Args:
         config: A configuration dictionary that updates the global configuration.
@@ -54,7 +54,7 @@ def scrape_with_config(config):
     Returns:
         The result of the main() function. Is a scraper search object.
         In case you want to access the session, import it like this:
-        ```from GoogleScraper database import session```
+        ```from SearchAnalyzer database import session```
     """
     if not isinstance(config, dict):
         raise ValueError(
@@ -143,9 +143,9 @@ class ShowProgressQueue(threading.Thread):
 
 
 def main(return_results=False, parse_cmd_line=True, config_from_dict=None):
-    """Runs the GoogleScraper application as determined by the various configuration points.
+    """Runs the SearchAnalyzer application as determined by the various configuration points.
 
-    The main() function encompasses the core functionality of GoogleScraper. But it
+    The main() function encompasses the core functionality of SearchAnalyzer. But it
     shouldn't be the main() functions job to check the validity of the provided
     configuration.
 
@@ -153,7 +153,7 @@ def main(return_results=False, parse_cmd_line=True, config_from_dict=None):
         return_results: When GoogleScrape is used from within another program, don't print results to stdout,
                         store them in a database instead.
         parse_cmd_line: Whether to get options from the command line or not.
-        config_from_dict: Configuration that is passed when GoogleScraper is called as library.
+        config_from_dict: Configuration that is passed when SearchAnalyzer is called as library.
     Returns:
         A database session to the results when return_results is True. Else, nothing.
     """
@@ -177,7 +177,7 @@ def main(return_results=False, parse_cmd_line=True, config_from_dict=None):
         return
 
     if config.get('version'):
-        from GoogleScraper.version import __version__
+        from SearchAnalyzer.version import __version__
         print(__version__)
         return
 
@@ -225,7 +225,7 @@ def main(return_results=False, parse_cmd_line=True, config_from_dict=None):
         namespace['ScraperSearch'] = ScraperSearch
         namespace['SERP'] = SERP
         namespace['Link'] = Link
-        namespace['Proxy'] = GoogleScraper.database.Proxy
+        namespace['Proxy'] = SearchAnalyzer.database.Proxy
         print('Available objects:')
         print('session - A sqlalchemy session of the results database')
         print('ScraperSearch - Search/Scrape job instances')
@@ -301,7 +301,7 @@ def main(return_results=False, parse_cmd_line=True, config_from_dict=None):
 
     if config.get('simulate', False):
         print('*' * 60 + 'SIMULATION' + '*' * 60)
-        logger.info('If GoogleScraper would have been run without the --simulate flag, it would have:')
+        logger.info('If SearchAnalyzer would have been run without the --simulate flag, it would have:')
         logger.info('Scraped for {} keywords, with {} results a page, in total {} pages for each keyword'.format(
             len(keywords), int(config.get('num_results_per_page', 0)),
             int(config.get('num_pages_for_keyword'))))
@@ -448,7 +448,7 @@ def main(return_results=False, parse_cmd_line=True, config_from_dict=None):
         else:
             raise Exception('No such scrape_method {}'.format(config.get('scrape_method')))
 
-    from GoogleScraper.output_converter import close_outfile
+    from SearchAnalyzer.output_converter import close_outfile
     close_outfile()
 
     scraper_search.stopped_searching = datetime.datetime.utcnow()

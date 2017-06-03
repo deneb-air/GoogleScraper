@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from GoogleScraper import scrape_with_config, GoogleSearchError
+from SearchAnalyzer import scrape_with_config, GoogleSearchError
 
 # See in the config.cfg file for possible values
 config = {
