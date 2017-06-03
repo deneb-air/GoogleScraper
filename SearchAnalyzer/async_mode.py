@@ -62,7 +62,7 @@ class AsyncHttpScrape(object):
                 self.headers))
 
             if response.status == 200:
-                body = yield from response.read_and_close(decode=False)
+                body = yield from response.text()
                 self.parser = self.parser(config=self.config, html=body)
                 return self
 
