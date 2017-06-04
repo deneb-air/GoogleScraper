@@ -42,16 +42,19 @@ class Parser:
     # the selector that gets the number of results (guessed) as shown by the search engine.
     num_results_search_selectors = []
 
-    # some search engine show on which page we currently are. If supportd, this selector will get this value.
+    # some search engine show on which page we currently are. If supported, this selector will get this value.
     page_number_selectors = []
 
     # The supported search types. For instance, Google supports Video Search, Image Search, News search
     search_types = []
 
+    #
+    total_results_re = re.compile('([^0-9]*)([ ,.0-9]+)(.*)')
+
     # Each subclass of Parser may declare an arbitrary amount of attributes that
     # follow a naming convention like this:
     # *_search_selectors
-    # where the asterix may be replaced with arbitrary identifier names.
+    # where the asterisk may be replaced with arbitrary identifier names.
     # Any of these attributes represent css selectors for a specific search type.
     # If you didn't specify the search type in the search_types list, this attribute
     # will not be evaluated and no data will be parsed.
@@ -78,8 +81,9 @@ class Parser:
         self.html = html
         self.dom = None
         self.search_results = {}
-        self.num_results_for_query = ''
+        self.num_results_for_query = ''  # total results for query as number
         self.num_results = 0
+        self.total_results = 0  # total results for query as number
         self.effective_query = ''
         self.page_number = -1
         self.no_results = False
@@ -142,6 +146,10 @@ class Parser:
                 self.__class__.__name__,
                 num_results_selector
             ))
+        else:
+            match = self.total_results_re.match(str(self.num_results_for_query))
+            if match:
+                self.total_results = int(re.sub('[., ]', '', match.group(2)))
 
         # get the current page we are at. Sometimes we search engines don't show this.
         try:

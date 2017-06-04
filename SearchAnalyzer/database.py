@@ -70,6 +70,9 @@ class SearchEngineResultsPage(Base):
     # The string in the SERP that indicates how many results we got for the search term.
     num_results_for_query = Column(String, default='')
 
+    #
+    total_results = Column(Integer, default=0)
+
     # Whether we got any results at all. This is the same as len(serp.links)
     num_results = Column(Integer, default=-1)
 
@@ -114,6 +117,7 @@ class SearchEngineResultsPage(Base):
         self.num_results = parser.num_results
         self.effective_query = parser.effective_query
         self.no_results = parser.no_results
+        self.total_results = parser.total_results
 
         for key, value in parser.search_results.items():
             if isinstance(value, list):
