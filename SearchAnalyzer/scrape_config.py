@@ -19,7 +19,7 @@ print_results = 'all'
 
 # The name of the database that is written to the same
 # directory where SearchAnalyzer will be called.
-database_name = 'google_scraper'
+database_name = 'search_analyzer'
 
 # The file name of the output
 # The file name also determine the format of how

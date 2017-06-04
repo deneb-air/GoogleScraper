@@ -254,7 +254,7 @@ def get_engine(config, path=None):
     Returns:
         The sqlalchemy engine.
     """
-    db_path = path if path else config.get('database_name', 'google_scraper') + '.db'
+    db_path = path if path else config.get('database_name', 'search_analyzer') + '.db'
     echo = config.get('log_sqlalchemy', False)
     engine = create_engine('sqlite:///' + db_path, echo=echo, connect_args={'check_same_thread': False})
     Base.metadata.create_all(engine)
