@@ -21,6 +21,8 @@ class GoogleParser(Parser):
 
     page_number_selectors = ['#navcnt td.cur::text']
 
+    total_results_re = re.compile('(Page \d+ )?([^0-9]*)(?P<total>[ ,.0-9]+)(.*)')
+
     normal_search_selectors = {
         'results': {
             'us_ip': {

@@ -49,7 +49,7 @@ class Parser:
     search_types = []
 
     #
-    total_results_re = re.compile('([^0-9]*)([ ,.0-9]+)(.*)')
+    total_results_re = re.compile('([^0-9]*)(?P<total>[ ,.0-9]+)(.*)')
 
     # Each subclass of Parser may declare an arbitrary amount of attributes that
     # follow a naming convention like this:
@@ -149,7 +149,7 @@ class Parser:
         else:
             match = self.total_results_re.match(str(self.num_results_for_query))
             if match:
-                self.total_results = int(re.sub('[., ]', '', match.group(2)))
+                self.total_results = int(re.sub('[., ]', '', match.group('total')))
 
         # get the current page we are at. Sometimes we search engines don't show this.
         try:
