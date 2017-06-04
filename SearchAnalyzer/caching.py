@@ -416,8 +416,8 @@ class CacheManager():
                 num_cached += 1
                 scrape_jobs.remove(job)
 
-        logger.info('{} cache files found in {}'.format(len(files), self.config.get('cachedir')))
-        logger.info('{}/{} objects have been read from the cache. {} remain to get scraped.'.format(
+        logger.debug('{} cache files found in {}'.format(len(files), self.config.get('cachedir')))
+        logger.debug('{}/{} objects have been read from the cache. {} remain to get scraped.'.format(
             num_cached, num_total, num_total - num_cached))
 
         session.add(scraper_search)
