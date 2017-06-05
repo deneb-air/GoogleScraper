@@ -112,6 +112,32 @@ class ParserTestCase(unittest.TestCase):
 
         self._test_engine_not_found('google', 'data/uncompressed_2017/google_not_found.html')
 
+    # google_ua
+    def test_google_ua(self):
+        self._test_engine_normal('google_ua', 'data/uncompressed_2017/google_ua_670120.1_p1.html', Expect(
+            False,                                                   # no_results
+            'Приблизна кількість результатів: 447 (0,48 сек.)',      # results_for_query
+            447,                                                     # total_results
+            9,                                                       # num_results
+            1,                                                       # page_number
+            9,                                                       # num_links
+            'agrodoctor.ua',                                         # visible_link
+            'головка коси жатки комбайна Claas'                      # snippet
+        ))
+
+        self._test_engine_normal('google_ua', 'data/uncompressed_2017/google_ua_samsung_p7.html', Expect(
+            False,                                                   # no_results
+            'Сторінка 7 з такої приблизної кількості результатів:',  # results_for_query
+            1480000000,                                              # total_results
+            10,                                                      # num_results
+            7,                                                       # page_number
+            10,                                                      # num_links
+            'ain.ua',                                                # visible_link
+            'Десять лет назад компания Apple'                        # snippet
+        ))
+
+        self._test_engine_not_found('google_ua', 'data/uncompressed_2017/google_ua_not_found.html')
+
     # bing
     def test_bing(self):
         self._test_engine_normal('bing', 'data/uncompressed_2017/bing_670120.1_p1.html', Expect(
