@@ -149,7 +149,7 @@ class Parser:
         else:
             match = self.total_results_re.match(str(self.num_results_for_query))
             if match:
-                self.total_results = int(re.sub('[., ]', '', match.group('total')))
+                self.total_results = int(re.sub('[., \xa0]', '', match.group('total')))
 
         # get the current page we are at. Sometimes we search engines don't show this.
         try:
