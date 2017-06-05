@@ -56,6 +56,7 @@ class SelScrape(SearchEngineScrape, threading.Thread):
 
     next_page_selectors = {
         'google': '#pnnext',
+        'google_ua': '#pnnext',
         'yandex': '.pager__button_kind_next',
         'bing': '.sb_pagN',
         'yahoo': '#pg-next',
@@ -69,6 +70,7 @@ class SelScrape(SearchEngineScrape, threading.Thread):
 
     input_field_selectors = {
         'google': (By.NAME, 'q'),
+        'google_ua': (By.NAME, 'q'),
         'yandex': (By.NAME, 'text'),
         'bing': (By.NAME, 'q'),
         'yahoo': (By.NAME, 'p'),
@@ -76,7 +78,6 @@ class SelScrape(SearchEngineScrape, threading.Thread):
         'duckduckgo': (By.NAME, 'q'),
         'ask': (By.NAME, 'q'),
         'blekko': (By.NAME, 'q'),
-        'google': (By.NAME, 'q'),
         'googleimg': (By.NAME, 'as_q'),
         'baiduimg': (By.NAME, 'word'),
     }
@@ -97,6 +98,7 @@ class SelScrape(SearchEngineScrape, threading.Thread):
 
     normal_search_locations = {
         'google': 'https://www.google.com/',
+        'google_ua': 'https://www.google.com.ua/',
         'yandex': 'http://www.yandex.ru/',
         'bing': 'http://www.bing.com/',
         'yahoo': 'https://yahoo.com/',
@@ -108,6 +110,7 @@ class SelScrape(SearchEngineScrape, threading.Thread):
 
     image_search_locations = {
         'google': 'https://www.google.com/imghp',
+        'google_ua': 'https://www.google.com.ua/imghp',
         'yandex': 'http://yandex.ru/images/',
         'bing': 'https://www.bing.com/?scope=images',
         'yahoo': 'http://images.yahoo.com/',
@@ -474,6 +477,8 @@ class SelScrape(SearchEngineScrape, threading.Thread):
         if self.search_type == 'normal':
 
             if self.search_engine_name == 'google':
+                selector = '#navcnt td.cur'
+            elif self.search_engine_name == 'google_ua':
                 selector = '#navcnt td.cur'
             elif self.search_engine_name == 'yandex':
                 selector = '.pager__item_current_yes font font'

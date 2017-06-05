@@ -132,6 +132,10 @@ class SearchEngineScrape(metaclass=abc.ABCMeta):
             'inurl': '/sorry/',
             'inhtml': 'detected unusual traffic'
         },
+        'google_ua': {
+            'inurl': '/sorry/',
+            'inhtml': 'detected unusual traffic'
+        },
         'bing': {},
         'yahoo': {},
         'baidu': {},

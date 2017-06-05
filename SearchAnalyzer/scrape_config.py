@@ -87,7 +87,7 @@ google_ip_file = ''
 # List of supported search engines
 # If you add support for another search engine (of course implement it in the
 # appropriate places) add it in this list.
-supported_search_engines = ['google', 'yandex', 'bing', 'yahoo', 'baidu', 'duckduckgo', 'ask']
+supported_search_engines = ['google', 'google_ua', 'yandex', 'bing', 'yahoo', 'baidu', 'duckduckgo', 'ask']
 
 # The search engine(s) to use. For the supported search engines, see above "supported_search_engines"
 search_engines = ['google', ]
@@ -97,6 +97,9 @@ search_engines = ['google', ]
 
 # The google base search url
 google_search_url = 'https://www.google.com/search?'
+
+# The google_ua base search url
+google_ua_search_url = 'https://www.google.com.ua/search?'
 
 # The yandex base search url
 yandex_search_url = 'http://yandex.ru/yandsearch?'

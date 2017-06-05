@@ -11,6 +11,7 @@ from SearchAnalyzer.parser.bing_parser import BingParser
 from SearchAnalyzer.parser.blekko_parser import BlekkoParser
 from SearchAnalyzer.parser.duckduckgo_parser import DuckduckgoParser
 from SearchAnalyzer.parser.google_parser import GoogleParser
+from SearchAnalyzer.parser.google_ua_parser import GoogleUAParser
 from SearchAnalyzer.parser.yahoo_parser import YahooParser
 from SearchAnalyzer.parser.yandex_parser import YandexParser
 from SearchAnalyzer.parser.exception import UnknowUrlException, NoParserForSearchEngineException
@@ -30,7 +31,9 @@ def get_parser_by_url(url):
     """
     parser = None
 
-    if re.search(r'^http[s]?://www\.google', url):
+    if re.search(r'^http[s]?://www\.google\.com\.ua', url):
+        parser = GoogleUAParser
+    elif re.search(r'^http[s]?://www\.google', url):
         parser = GoogleParser
     elif re.search(r'^http://yandex\.ru', url):
         parser = YandexParser
@@ -66,6 +69,8 @@ def get_parser_by_search_engine(search_engine):
     """
     if search_engine == 'google' or search_engine == 'googleimg':
         return GoogleParser
+    elif search_engine == 'google_ua':
+        return GoogleUAParser
     elif search_engine == 'yandex':
         return YandexParser
     elif search_engine == 'bing':

@@ -76,6 +76,18 @@ def get_GET_params_for_search_engine(query, search_engine, page_number=1, num_re
                 'sa': 'X'
             })
 
+    elif search_engine == 'google_ua':
+        # always use the ukrainian interface, such that we can detect
+        # state by some hard coded needles.
+        search_params['hl'] = 'uk'
+        search_params['q'] = query
+        # only set when other num results than 10.
+        if num_results_per_page != 10:
+            search_params['num'] = str(num_results_per_page)
+
+        if page_number > 1:
+            search_params['start'] = str((page_number - 1) * int(num_results_per_page))
+
     elif search_engine == 'yandex':
         search_params['text'] = query
         if page_number > 1:

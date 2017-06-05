@@ -168,6 +168,11 @@ google_search_params = {
 }
 
 """
+Google UA search params.
+"""
+google_ua_search_params = google_search_params
+
+"""
 Yandex search params.
 
 
