@@ -112,4 +112,28 @@ class ParserTestCase(unittest.TestCase):
 
         self._test_engine_not_found('google', 'data/uncompressed_2017/google_not_found.html')
 
+    # bing
+    def test_bing(self):
+        self._test_engine_normal('bing', 'data/uncompressed_2017/bing_670120.1_p1.html', Expect(
+            False,  # no_results
+            '1,430 results',  # results_for_query
+            1430,  # total_results
+            10,  # num_results
+            1,  # page_number
+            10,  # num_links
+            'agrodoctor.ua',  # visible_link
+            'Length - 172MM. OEM #670120.1'  # snippet
+        ))
 
+        self._test_engine_normal('bing', 'data/uncompressed_2017/bing_samsung_p11.html', Expect(
+            False,  # no_results
+            '98-107 of 32,200,000 results',  # results_for_query
+            32200000,  # total_results
+            10,  # num_results
+            11,  # page_number
+            10,  # num_links
+            'www.microsoft.com',  # visible_link
+            'latest cell phones and smartphones'  # snippet
+        ))
+
+        self._test_engine_not_found('bing', 'data/uncompressed_2017/bing_not_found.html')
