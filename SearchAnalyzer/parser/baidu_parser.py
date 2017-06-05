@@ -15,7 +15,7 @@ class BaiduParser(Parser):
 
     num_results_search_selectors = ['#container .nums']
 
-    no_results_selector = []
+    no_results_selector = ['.content_none .nors p::text']
 
     # no such thing for baidu
     effective_query_selector = ['']
@@ -24,23 +24,15 @@ class BaiduParser(Parser):
 
     normal_search_selectors = {
         'results': {
-            'de_ip': {
-                'container': '#content_left',
-                'result_container': '.result-op',
-                'link': 'h3 > a.t::attr(href)',
-                'snippet': '.c-abstract::text',
-                'title': 'h3 > a.t::text',
-                'visible_link': 'span.c-showurl::text'
-            },
-            'nojs': {
+            '2017-06-05': {
                 'container': '#content_left',
                 'result_container': '.result',
                 'link': 'h3 > a::attr(href)',
                 'snippet': '.c-abstract::text',
                 'title': 'h3 > a::text',
-                'visible_link': 'span.g::text'
+                'visible_link': 'a.c-showurl::text'
             }
-        },
+        }
     }
 
     image_search_selectors = {
@@ -67,8 +59,9 @@ class BaiduParser(Parser):
         """
         super().after_parsing()
 
-        if self.search_engine == 'normal':
-            if len(self.dom.xpath(self.css_to_xpath('.hit_top_new'))) >= 1:
+        if self.searchtype == 'normal':
+            self.no_results = False
+            if self.no_results_text:
                 self.no_results = True
 
         if self.searchtype == 'image':
