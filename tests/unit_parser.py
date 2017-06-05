@@ -137,3 +137,29 @@ class ParserTestCase(unittest.TestCase):
         ))
 
         self._test_engine_not_found('bing', 'data/uncompressed_2017/bing_not_found.html')
+
+    # baidu
+    def test_baidu(self):
+        self._test_engine_normal('baidu', 'data/uncompressed_2017/baidu_670120.1_p1.html', Expect(
+            False,                        # no_results
+            '百度为您找到相关结果约3,240个',  # results_for_query
+            3240,                         # total_results
+            10,                           # num_results
+            1,                            # page_number
+            10,                           # num_links
+            'www.76zh.com',               # visible_link
+            '数学教育 670105K 数'           # snippet
+        ))
+
+        self._test_engine_normal('baidu', 'data/uncompressed_2017/baidu_samsung_p5.html', Expect(
+            False,                            # no_results
+            '百度为您找到相关结果约15,100,000个',  # results_for_query
+            15100000,                         # total_results
+            10,                               # num_results
+            5,                                # page_number
+            10,                               # num_links
+            'account.samsung.com',            # visible_link
+            '三星SDS的官'                       # snippet
+        ))
+
+        self._test_engine_not_found('baidu', 'data/uncompressed_2017/baidu_not_found.html')
