@@ -89,14 +89,14 @@ class ParserTestCase(unittest.TestCase):
     # google
     def test_google(self):
         self._test_engine_normal('google', 'data/uncompressed_2017/google_670120.1_p1.html', Expect(
-            False,                               # no_results
-            'About 540 results (0.26 seconds)',  # results_for_query
-            540,                                 # total_results
-            9,                                   # num_results
-            1,                                   # page_number
-            9,                                   # num_links
-            'agrodoctor.ua',                     # visible_link
-            'Knife Head 670120.1+676231.0'       # snippet
+            False,                                                   # no_results
+            'About 540 results (0.26 seconds)',                      # results_for_query
+            540,                                                     # total_results
+            9,                                                       # num_results
+            1,                                                       # page_number
+            9,                                                       # num_links
+            'agrodoctor.ua',                                         # visible_link
+            'Knife Head 670120.1+676231.0'                           # snippet
         ))
 
         self._test_engine_normal('google', 'data/uncompressed_2017/google_samsung_p7.html', Expect(
@@ -115,25 +115,25 @@ class ParserTestCase(unittest.TestCase):
     # bing
     def test_bing(self):
         self._test_engine_normal('bing', 'data/uncompressed_2017/bing_670120.1_p1.html', Expect(
-            False,  # no_results
-            '1,430 results',  # results_for_query
-            1430,  # total_results
-            10,  # num_results
-            1,  # page_number
-            10,  # num_links
-            'agrodoctor.ua',  # visible_link
-            'Length - 172MM. OEM #670120.1'  # snippet
+            False,                                                   # no_results
+            '1,430 results',                                         # results_for_query
+            1430,                                                    # total_results
+            10,                                                      # num_results
+            1,                                                       # page_number
+            10,                                                      # num_links
+            'agrodoctor.ua',                                         # visible_link
+            'Length - 172MM. OEM #670120.1'                          # snippet
         ))
 
         self._test_engine_normal('bing', 'data/uncompressed_2017/bing_samsung_p11.html', Expect(
-            False,  # no_results
-            '98-107 of 32,200,000 results',  # results_for_query
-            32200000,  # total_results
-            10,  # num_results
-            11,  # page_number
-            10,  # num_links
-            'www.microsoft.com',  # visible_link
-            'latest cell phones and smartphones'  # snippet
+            False,                                                   # no_results
+            '98-107 of 32,200,000 results',                          # results_for_query
+            32200000,                                                # total_results
+            10,                                                      # num_results
+            11,                                                      # page_number
+            10,                                                      # num_links
+            'www.microsoft.com',                                     # visible_link
+            'latest cell phones and smartphones'                     # snippet
         ))
 
         self._test_engine_not_found('bing', 'data/uncompressed_2017/bing_not_found.html')
@@ -141,25 +141,25 @@ class ParserTestCase(unittest.TestCase):
     # baidu
     def test_baidu(self):
         self._test_engine_normal('baidu', 'data/uncompressed_2017/baidu_670120.1_p1.html', Expect(
-            False,                        # no_results
-            '百度为您找到相关结果约3,240个',  # results_for_query
-            3240,                         # total_results
-            10,                           # num_results
-            1,                            # page_number
-            10,                           # num_links
-            'www.76zh.com',               # visible_link
-            '数学教育 670105K 数'           # snippet
+            False,                                                   # no_results
+            '百度为您找到相关结果约3,240个',                              # results_for_query
+            3240,                                                    # total_results
+            10,                                                      # num_results
+            1,                                                       # page_number
+            10,                                                      # num_links
+            'www.76zh.com',                                          # visible_link
+            '数学教育 670105K 数'                                      # snippet
         ))
 
         self._test_engine_normal('baidu', 'data/uncompressed_2017/baidu_samsung_p5.html', Expect(
-            False,                            # no_results
-            '百度为您找到相关结果约15,100,000个',  # results_for_query
-            15100000,                         # total_results
-            10,                               # num_results
-            5,                                # page_number
-            10,                               # num_links
-            'account.samsung.com',            # visible_link
-            '三星SDS的官'                       # snippet
+            False,                                                   # no_results
+            '百度为您找到相关结果约15,100,000个',                         # results_for_query
+            15100000,                                                # total_results
+            10,                                                      # num_results
+            5,                                                       # page_number
+            10,                                                      # num_links
+            'account.samsung.com',                                   # visible_link
+            '三星SDS的官'                                              # snippet
         ))
 
         self._test_engine_not_found('baidu', 'data/uncompressed_2017/baidu_not_found.html')
