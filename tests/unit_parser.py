@@ -9,12 +9,14 @@ from SearchAnalyzer.config import get_config
 from SearchAnalyzer.parser.tools import get_parser_by_search_engine
 
 Expect = namedtuple('Expect', [
+    'no_results',
     'results_for_query',
     'total_results',
     'num_results',
     'page_number',
-    'no_results',
-    'num_links'
+    'num_links',
+    'visible_link',
+    'snippet'
 ])
 
 
@@ -42,31 +44,72 @@ class ParserTestCase(unittest.TestCase):
 
         return parser
 
+    # test normal search result page
     def _test_engine_normal(self, se, filename, expect):
         parser = self.get_parser_for_file(se, filename)
 
-        self.assertFalse(expect.no_results)
+        self.assertFalse(parser.no_results)
+
         self.assertIn(expect.results_for_query, parser.num_results_for_query)
         self.assertEqual(expect.total_results, parser.total_results)
         self.assertEqual(expect.num_results, parser.num_results)
-        self.assertEqual(expect.page_number, parser.page_number)
-        self.assertEqual(expect.num_links, len(parser.search_results['results']))
 
-    def test_google_normal(self):
+        self.assertEqual(expect.page_number, parser.page_number)
+
+        self.assertEqual(expect.num_links, len(parser.search_results['results']))
+        self.assertTrue(all(res['link'] for res in parser.search_results['results']))
+        self.assertTrue(all(res['visible_link'] for res in parser.search_results['results']))
+
+        self.assertTrue(
+            any([
+                expect.visible_link in res['visible_link']
+                for res in parser.search_results['results']
+            ]),
+            'There is not a link \'{}\' in results'.format(expect.visible_link)
+        )
+        self.assertTrue(
+            any([
+                expect.snippet in res['snippet']
+                for res in parser.search_results['results']
+            ]),
+            'There is not result with \'{}\' snippet'.format(expect.snippet)
+        )
+
+    # test 'not found' page
+    def _test_engine_not_found(self, se, filename):
+        parser = self.get_parser_for_file(se, filename)
+
+        self.assertTrue(parser.no_results)
+        self.assertFalse(parser.num_results_for_query)
+        self.assertEqual(0, parser.total_results)
+        self.assertEqual(0, parser.num_results)
+        self.assertEqual(0, parser.page_number)
+        self.assertListEqual([], parser.search_results['results'])
+
+    # google
+    def test_google(self):
         self._test_engine_normal('google', 'data/uncompressed_2017/google_670120.1_p1.html', Expect(
+            False,                               # no_results
             'About 540 results (0.26 seconds)',  # results_for_query
-            540,    # total_results
-            9,      # num_results
-            1,      # page_number
-            False,  # no_results
-            9       # num_links
+            540,                                 # total_results
+            9,                                   # num_results
+            1,                                   # page_number
+            9,                                   # num_links
+            'agrodoctor.ua',                     # visible_link
+            'Knife Head 670120.1+676231.0'       # snippet
         ))
 
         self._test_engine_normal('google', 'data/uncompressed_2017/google_samsung_p7.html', Expect(
+            False,                                                   # no_results
             'Page 7 of about 1,470,000,000 results (0.77 seconds)',  # results_for_query
-            1470000000,  # total_results
-            13,          # num_results
-            7,           # page_number
-            False,       # no_results
-            10           # num_links
+            1470000000,                                              # total_results
+            13,                                                      # num_results
+            7,                                                       # page_number
+            10,                                                      # num_links
+            'thinktankteam.info',                                    # visible_link
+            'Oculus mobile platform transforms'                      # snippet
         ))
+
+        self._test_engine_not_found('google', 'data/uncompressed_2017/google_not_found.html')
+
+
