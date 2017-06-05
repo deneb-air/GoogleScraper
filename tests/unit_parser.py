@@ -69,7 +69,7 @@ class ParserTestCase(unittest.TestCase):
         )
         self.assertTrue(
             any([
-                expect.snippet in res['snippet']
+                expect.snippet in res['snippet'] if res['snippet'] else False
                 for res in parser.search_results['results']
             ]),
             'There is not result with \'{}\' snippet'.format(expect.snippet)
