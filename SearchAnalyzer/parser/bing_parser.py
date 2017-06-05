@@ -12,13 +12,15 @@ class BingParser(Parser):
 
     search_types = ['normal', 'image']
 
-    no_results_selector = ['#b_results > .b_ans::text']
+    no_results_selector = ['#b_results > .b_no::text']
 
     num_results_search_selectors = ['.sb_count']
 
     effective_query_selector = ['#sp_requery a > strong', '#sp_requery + #sp_recourse a::attr(href)']
 
     page_number_selectors = ['.sb_pagS::text']
+
+    total_results_re = re.compile('(\d+-\d+ )?([^0-9]*)(?P<total>[ ,.0-9]+)(.*)')
 
     normal_search_selectors = {
         'results': {
