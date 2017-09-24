@@ -3,6 +3,7 @@
 import os
 import unittest
 from collections import namedtuple
+from collections import Counter
 
 # from SearchAnalyzer import scrape_with_config
 from SearchAnalyzer.config import get_config
@@ -34,7 +35,7 @@ class ParserTestCase(unittest.TestCase):
     # way to assert that a certain url or piece must be in the results.
     # If the SERP format changes, update accordingly (after all, this shouldn't happen that often).
     @staticmethod
-    def get_parser_for_file(se, file, **kwargs):
+    def _get_parser_for_file(se, file, **kwargs):
         base = os.path.dirname(os.path.realpath(__file__))
         file = os.path.join(base, file)
         with open(file, 'r') as f:
@@ -44,9 +45,28 @@ class ParserTestCase(unittest.TestCase):
 
         return parser
 
+    def assertAlmostAllSnippets(self, parser, delta=4):
+        self.assertAlmostEqual(
+            len([v['snippet'] for v in parser.search_results['results'] if v['snippet'] is not None]), 10, delta=delta)
+
+
+    @staticmethod
+    def assert_atleast90percent_of_items_are_not_None(parser, exclude_keys={'snippet'}):
+        for result_type, res in parser.search_results.items():
+
+            c = Counter()
+            for item in res:
+                for key, value in item.items():
+                    if value is None:
+                        c[key] += 1
+            for key, value in c.items():
+                if key not in exclude_keys:
+                    assert (len(res) / int(value)) >= 9, key + ' has too many times a None value: ' + '{}/{}'.format(
+                        int(value), len(res))
+
     # test normal search result page
     def _test_engine_normal(self, se, filename, expect):
-        parser = self.get_parser_for_file(se, filename)
+        parser = self._get_parser_for_file(se, filename)
 
         self.assertFalse(parser.no_results)
 
@@ -59,6 +79,8 @@ class ParserTestCase(unittest.TestCase):
         self.assertEqual(expect.num_links, len(parser.search_results['results']))
         self.assertTrue(all(res['link'] for res in parser.search_results['results']))
         self.assertTrue(all(res['visible_link'] for res in parser.search_results['results']))
+
+        self.assertAlmostAllSnippets(parser)
 
         self.assertTrue(
             any([
@@ -77,7 +99,7 @@ class ParserTestCase(unittest.TestCase):
 
     # test 'not found' page
     def _test_engine_not_found(self, se, filename):
-        parser = self.get_parser_for_file(se, filename)
+        parser = self._get_parser_for_file(se, filename)
 
         self.assertTrue(parser.no_results)
         # self.assertFalse(parser.num_results_for_query)
