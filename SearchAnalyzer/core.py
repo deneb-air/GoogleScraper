@@ -123,7 +123,8 @@ class ShowProgressQueue(threading.Thread):
         self.queue = queue
         self.num_keywords = num_keywords
         self.num_already_processed = 0
-        self.progress_fmt = '\033[92m{}/{} keywords processed.\033[0m'
+        # self.progress_fmt = '\033[92m{}/{} keywords processed.\033[0m'
+        self.progress_fmt = '{}/{} keywords processed.'
 
     def run(self):
         while self.num_already_processed < self.num_keywords:
