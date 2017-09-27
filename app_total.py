@@ -48,23 +48,23 @@ class App:
 
         xml_doc = impl.createDocument(None, 'root', None)
         xml_root = xml_doc.documentElement
-        xml_items = xml_doc.createElement('items')
+        xml_data = xml_doc.createElement('data')
         for keyword in self.data:
-            xml_item = xml_doc.createElement('item')
-
             xml_query = xml_doc.createElement('query')
-            xml_query.appendChild(xml_doc.createTextNode(keyword))
-            xml_item.appendChild(xml_query)
+
+            xml_keyword = xml_doc.createElement('keyword')
+            xml_keyword.appendChild(xml_doc.createTextNode(keyword))
+            xml_query.appendChild(xml_keyword)
 
             xml_engines = xml_doc.createElement('engines')
             for engine in self.data[keyword]:
                 xml_engine = App._create_engine_node(xml_doc, engine, data[keyword][engine])
                 xml_engines.appendChild(xml_engine)
 
-            xml_item.appendChild(xml_engines)
-            xml_items.appendChild(xml_item)
+            xml_query.appendChild(xml_engines)
+            xml_data.appendChild(xml_query)
 
-        xml_root.appendChild(xml_items)
+        xml_root.appendChild(xml_data)
 
         return xml_doc
 
@@ -99,10 +99,13 @@ class App:
 
 
 if __name__ == '__main__':
+    print('Starting ...', end='\r')
+
     sa = App(app_total_conf)
     data = sa.run()
     xml_d = sa.save()
 
-    print("##########################################")
-    print(xml_d.toprettyxml())
-    print("##########################################")
+    print('Done!')
+    # print("##########################################")
+    # print(xml_d.toprettyxml())
+    # print("##########################################")
